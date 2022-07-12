@@ -10,23 +10,65 @@ with open(csv_path) as csv_file:
     csvreader = csv.reader(csv_file, delimiter=",")
     
     csv_header = next(csvreader)
-    print(f"File header is: {csv_header}")
+    #print(f"File header is: {csv_header}")
 
-#Find number of months
-    row_count = 0
+#Initialize variables
+    month_count = 0
+    total_profit_loss = 0
+    change = 0
+    list_of_changes = []
+    average_change = 0.0
+    max_positive_change = 0
+    max_negative_change = 0
+    greatest_gain = []
+    greatest_loss = []
+    values = []
+    i=1
     for row in csvreader:
-        row_count = row_count + 1
-        print(row)
-    print(row_count)
 
-#Calculate total amount of "Profit/Losses"
+        #Find number of months
+        month_count = month_count + 1
+        
+        #Calculate total Profit/Loss
+        total_profit_loss = total_profit_loss + int(row[1])
+        #print(row)
 
-#Calculate average of changes in "Profit/Losses"
+        #Calculate average of changes in Profit/Losses
+        #Start by making a list of values
+        values.append(int(row[1]))
+    
+    # print(values)
+        
+    for i in range(1,len(values)):
+        change = values[i]-values[i-1]
+        list_of_changes.append(change)
+        # print(change)
+    
+    #Find average of changes
+    #print(list_of_changes)
+    average_change = sum(list_of_changes)/len(list_of_changes)   
+   # print(average_change)
 
-#Find largest increase in profits
+    #Find largest increase in profits
+    # max_positive_change = max(list_of_changes)
+    # print(max_positive_change)
 
-#Find largest decrease in profits
+    # for row in csvreader:
+    #     if row[1] == max_positive_change:
+    #         greatest_gain.append(row)
+    # print(greatest_gain)
 
-#Print Financial Analysis to Terminal
+    #Find largest decrease in profits
+    
+    
+    #Print Financial Analysis to Terminal
+    print(" ")
+    print("Financial Analysis")
+    print("---------------------------")
+    print(f"Total months: {month_count}")
+    print(f"Total: ${total_profit_loss}")
+    print(f"Average change: ${average_change}")
+    #print(f"Greatest Increase of Profits: {greatest_gain[0]} ${greatest_gain[1]}")
+    #print(f"Greatest Loss: {greatest_loss[0]} ${greatest_loss[1]}")
 
 #Create CSV file of Financial Analysis
