@@ -65,15 +65,13 @@ with open(csv_path) as csv_file:
     print(f"Greatest Loss: {month_max_negative_change} (${max_negative_change})")
 
 #Create CSV file of Financial Analysis
-output_csv_path = os.path.join("analysis", "Financial_Analysis.csv")
+output_path = os.path.join("analysis", "Financial_Analysis.txt")
 
-with open(output_csv_path, 'w') as output_file:
-    csvwriter = csv.writer(output_file, delimiter=",")
-
-    csvwriter.writerow(["Financial Analysis"])
-    csvwriter.writerow(["---------------------------"])
-    csvwriter.writerow([f"Total months: {month_count}"])
-    csvwriter.writerow([f"Total: ${total_profit_loss}"])
-    csvwriter.writerow([f"Average change: ${average_change}"])
-    csvwriter.writerow([f"Greatest Increase of Profits: {month_max_positive_change} (${max_positive_change})"])
-    csvwriter.writerow([f"Greatest Loss: {month_max_negative_change} (${max_negative_change})"])
+with open(output_path, 'w') as output_file:
+    output_file.write("Financial Analysis\n")
+    output_file.write("---------------------------\n")
+    output_file.write(f"Total months: {month_count}\n")
+    output_file.write(f"Total: ${total_profit_loss}\n")
+    output_file.write(f"Average change: ${average_change}\n")
+    output_file.write(f"Greatest Increase of Profits: {month_max_positive_change} (${max_positive_change})\n")
+    output_file.write(f"Greatest Loss: {month_max_negative_change} (${max_negative_change})")
