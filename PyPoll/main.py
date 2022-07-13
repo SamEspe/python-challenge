@@ -33,27 +33,26 @@ with open(csv_path) as csv_file:
         else:
             candidate_dict[candidate_name] = 1
 
-#Set up CSV
-output_csv_path = os.path.join("analysis", "Election_Results.csv")
+#Set up output file
+output_path = os.path.join("analysis", "Election_Results.txt")
 
-with open(output_csv_path, 'w') as output_file:
-    csvwriter = csv.writer(output_file, delimiter=",")
+with open(output_path, 'w') as output_file:
     #Find percentage, winner, print to terminal, print to csv
     print("")
     print("Election Results")
-    csvwriter.writerow(["Election Results"])
+    output_file.write("Election Results\n") 
     print("--------------------------")
-    csvwriter.writerow(["--------------------------"])
+    output_file.write("--------------------------\n")
     print(f"Total votes: {number_of_votes}")
-    csvwriter.writerow([f"Total votes: {number_of_votes}"])
+    output_file.write(f"Total votes: {number_of_votes}\n")
     print("--------------------------")
-    csvwriter.writerow(["--------------------------"])
+    output_file.write("--------------------------\n")
     print("")
 
     for candidate_name in candidate_dict:
         percent_of_votes = (candidate_dict[candidate_name]/number_of_votes)*100
         print(f"{candidate_name}: {percent_of_votes:.3f}% ({candidate_dict[candidate_name]})")
-        csvwriter.writerow([f"{candidate_name}: {percent_of_votes:.3f}% ({candidate_dict[candidate_name]})"])
+        output_file.write(f"{candidate_name}: {percent_of_votes:.3f}% ({candidate_dict[candidate_name]})\n")
 
         if winner not in candidate_dict.keys():
             winner = candidate_name
@@ -61,8 +60,8 @@ with open(output_csv_path, 'w') as output_file:
             winner = candidate_name
     print("")
     print("--------------------------")
-    csvwriter.writerow(["--------------------------"])
+    output_file.write("--------------------------\n")
     print(f"Winner is: {winner}")
-    csvwriter.writerow({f"Winner is: {winner}"})
+    output_file.write(f"Winner is: {winner}\n")
     print("--------------------------")
-    csvwriter.writerow(["--------------------------"])
+    output_file.write("--------------------------")
