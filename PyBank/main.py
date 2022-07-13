@@ -65,7 +65,7 @@ with open(csv_path) as csv_file:
     print(f"Greatest Loss: {month_max_negative_change} (${max_negative_change})")
 
 #Create CSV file of Financial Analysis
-output_csv_path = os.path.join("analysis", "analysis.csv")
+output_csv_path = os.path.join("analysis", "Financial_Analysis.csv")
 
 with open(output_csv_path, 'w') as output_file:
     csvwriter = csv.writer(output_file, delimiter=",")
